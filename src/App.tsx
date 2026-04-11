@@ -1,11 +1,11 @@
-import {} from 'react'
+import {} from 'react';
 
 function App() {
-  return (
-    <>
-      <div>STMLABS-test</div>
-    </>
-  )
+    return (
+        <>
+            <div>STMLABS-test</div>
+        </>
+    );
 }
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
 import type { User, ApiUser, ApiResponse } from '../types/user.types';
-import { formatDate } from '@/shared/utils/FormatDate';
+import { formatDate } from '@/shared/utils/formatDate';
 
 const API_URL = 'https://randomuser.me/api/?results=15';
 

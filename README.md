@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SubbotinValery/STMLabs-test">
-    <img src="src/assets/icons/stmlabs-icon.svg" alt="Logo" width="80" height="80">
+    <img src="https://stm-labs.ru/assets/images/stm-logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">STMLabs Test Task</h3>
@@ -79,26 +79,28 @@
 
 ## Структура проекта
 
+```
 src/
-├── app
-├── assets
-│ └── icons
-├── features
-│ └── users
-│ ├── components
-│ ├── config
-│ ├── hooks
-│ ├── services
-│ ├── types
-│ └── utils
-├── layouts
-├── shared
-│ ├── components
-│ ├── hooks
-│ ├── styles
-│ └── utils
+├── app/                # Инициализация приложения
+├── assets/             # Статические ресурсы
+│   └── icons/
+├── features/           # Бизнес-фичи приложения
+│   └── users/          # Фича "Пользователи"
+│       ├── components/ # Компоненты фичи
+│       ├── config/     # Конфигурация таблицы
+│       ├── hooks/      # Хуки фичи
+│       ├── services/   # API-сервисы
+│       ├── types/      # Типы данных
+│       └── utils/      # Утилиты
+├── layouts/            # Компоненты макетов
+├── shared/             # Переиспользуемые модули
+│   ├── components/     # Общие UI-компоненты
+│   ├── hooks/          # Общие хуки
+│   ├── styles/         # Глобальные стили
+│   └── utils/          # Общие утилиты
 ├── App.tsx
 └── main.tsx
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -144,11 +146,14 @@ src/
     npm run lint
 ```
 
-    Для автоматического исправления: `npm run lint:fix`
+    Для автоматического исправления:
+
+```bash
+    npm run lint:fix
+```
 
 Форматирование кода (Prettier):
 
     npm run format
 
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
-```

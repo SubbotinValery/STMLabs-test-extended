@@ -1,0 +1,118 @@
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--spacing-4);
+  background-color: var(--color-table-header);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.table td {
+  padding: var(--spacing-2);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.table tbody tr:hover td {
+  background-color: var(--color-table-row-hover);
+}
+
+.loadingContainer,
+.errorContainer,
+.emptyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-12);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.emptyMessage {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.table td[data-column='avatarThumb'] img {
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.table td[data-column='phone'],
+.table td[data-column='email'],
+.table td[data-column='registeredDate'] {
+  text-wrap: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .tableWrapper {
+    background: transparent;
+    box-shadow: none;
+    overflow-x: visible;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .table td::before {
+    content: attr(data-label) ': ';
+    font-weight: 600;
+    color: var(--color-text-primary);
+    width: 40%;
+  }
+
+  .table tr {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: var(--spacing-4);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .table td[data-column='avatarThumb'] img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .table tr {
+    width: 100%;
+  }
+}

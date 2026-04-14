@@ -1,6 +1,8 @@
+// src/shared/components/Table/Table.tsx
 import type { ReactNode } from 'react';
 import { Spinner } from '../Spinner/Spinner';
 import { Error } from '../Error/Error';
+import styles from './Table.module.css';
 
 export interface Column<T> {
   key: keyof T | string;
@@ -25,7 +27,7 @@ export function Table<T extends { id: string | number }>({
 }: TableProps<T>) {
   if (loading) {
     return (
-      <div className="table-loading">
+      <div className={styles.loadingContainer}>
         <Spinner />
       </div>
     );
@@ -33,38 +35,48 @@ export function Table<T extends { id: string | number }>({
 
   if (error) {
     return (
-      <div className="table-error">
+      <div className={styles.errorContainer}>
         <Error>{error}</Error>
       </div>
     );
   }
 
   if (data.length === 0) {
-    return <div className="table-empty">{emptyMessage}</div>;
+    return (
+      <div className={styles.emptyContainer}>
+        <div className={styles.emptyMessage}>{emptyMessage}</div>
+      </div>
+    );
   }
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          {columns.map((col) => (
-            <th key={col.key.toString()}>{col.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr key={item.id}>
+    <div className={styles.tableWrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
             {columns.map((col) => (
-              <td key={col.key.toString()}>
-                {col.render
-                  ? col.render(item[col.key as keyof T], item)
-                  : (item[col.key as keyof T] as ReactNode)}
-              </td>
+              <th key={col.key.toString()}>{col.label}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id}>
+              {columns.map((col) => (
+                <td
+                  key={col.key.toString()}
+                  data-label={col.label}
+                  data-column={col.key.toString()}
+                >
+                  {col.render
+                    ? col.render(item[col.key as keyof T], item)
+                    : (item[col.key as keyof T] as ReactNode)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

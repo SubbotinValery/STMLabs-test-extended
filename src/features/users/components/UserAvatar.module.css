@@ -1,0 +1,8 @@
+.userAvatar {
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
+  object-fit: cover;
+  border-top-color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}

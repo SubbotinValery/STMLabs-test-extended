@@ -1,4 +1,5 @@
 import { Tooltip } from '@/shared/components/Tooltip/Tooltip';
+import styles from './UserAvatar.module.css';
 
 interface UserAvatarProps {
   thumbnailUrl: string;
@@ -9,13 +10,15 @@ interface UserAvatarProps {
 export function UserAvatar({ thumbnailUrl, mediumUrl, name }: UserAvatarProps) {
   return (
     <Tooltip
+      positionX="center"
+      positionY="center"
       content={
-        <div className="avatar-tooltip">
-          <img src={mediumUrl} alt={name} className="avatar-tooltip-image" />
+        <div>
+          <img src={mediumUrl} alt={name} className={styles.userAvatar} />
         </div>
       }
     >
-      <img src={thumbnailUrl} alt={name} className="user-avatar" />
+      <img src={thumbnailUrl} alt={name} />
     </Tooltip>
   );
 }

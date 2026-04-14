@@ -1,0 +1,12 @@
+.tooltip {
+  animation: fadeIn var(--transition-slow) linear;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

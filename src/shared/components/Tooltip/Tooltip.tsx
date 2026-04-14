@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import styles from './Tooltip.module.css';
 
 interface TooltipProps {
   children: ReactNode;
@@ -20,7 +21,7 @@ export function Tooltip({
   offsetY = 10,
   delay = 300,
 }: TooltipProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
   const timeoutRef = useRef<number | null>(null);
   const childRef = useRef<HTMLDivElement>(null);
@@ -131,13 +132,13 @@ export function Tooltip({
       {isVisible &&
         createPortal(
           <div
-            className="tooltip"
+            className={styles.tooltip}
             style={{
               position: 'fixed',
               top: coords.top,
               left: coords.left,
               transform: getTransform(),
-              zIndex: 9999,
+              zIndex: 1000,
               pointerEvents: 'none',
             }}
           >

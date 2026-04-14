@@ -1,5 +1,9 @@
-import {} from 'react';
+import styles from './Spinner.module.css';
 
-export function Spinner() {
-  return <div className="spinner">Загрузка...</div>;
+interface SpinnerProps {
+  size?: number;
+}
+
+export function Spinner({ size = 40 }: SpinnerProps) {
+  return <div className={styles.spinner} style={{ width: size, height: size }}></div>;
 }

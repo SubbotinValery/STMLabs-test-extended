@@ -1,75 +1,154 @@
-# React + TypeScript + Vite
+<a id="readme-top"></a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br />
+<div align="center">
+  <a href="https://github.com/SubbotinValery/STMLabs-test">
+    <img src="src/assets/icons/stmlabs-icon.svg" alt="Logo" width="80" height="80">
+  </a>
 
-Currently, two official plugins are available:
+  <h3 align="center">STMLabs Test Task</h3>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+  <p align="center">
+    Тестовое задание на позицию Junior Frontend Developer
+    <br />
+    <br />
+    <a href="https://subbotinvalery.github.io/STMLabs-test/"><strong>✨ Открыть демо »</strong></a>
+    <br />
+  </p>
+</div>
 
-## React Compiler
+<details>
+  <summary>📖 Содержание</summary>
+  <ol>
+    <li><a href="#о-проекте">О проекте</a></li>
+    <li><a href="#функциональность">Функциональность</a></li>
+    <li><a href="#технологии">Технологии</a></li>
+    <li><a href="#структура-проекта">Структура проекта</a></li>
+    <li><a href="#установка-и-запуск">Установка и запуск</a></li>
+  </ol>
+</details>
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## О проекте
 
-Note: This will impact Vite dev & build performances.
+Это SPA для отображения, фильтрации и просмотра деталей случайных пользователей. Приложение разработано в рамках тестового задания и реализует все поставленные требования.
 
-## Expanding the ESLint configuration
+Проект построен на современном стеке (React 19, TypeScript, Vite) с упором на модульную архитектуру (Feature-Sliced Design), чистоту кода и производительность. Особое внимание уделено соблюдению всех пунктов ТЗ, включая собственную реализацию debounce для поля поиска и кастомный тултип для аватара.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Функциональность
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+✅ **Главный экран / Таблица пользователей**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Загрузка и отображение 15 случайных пользователей с сервиса `randomuser.me`.
+- Индикатор загрузки во время выполнения запроса.
+- Таблица с колонками: **Имя**, **Фото**, **Адрес**, **Email**, **Телефон**, **Дата регистрации**.
+
+✅ **Фильтрация**
+
+- Поле ввода для фильтрации пользователей по полному имени (имя + фамилия).
+- Фильтрация происходит на клиентской стороне.
+- **Реализация Debounce**: Задержка при вводе для оптимизации производительности, реализованная вручную (кастомный хук) без использования `useState`, как того требует ТЗ.
+- Кнопка сброса фильтра.
+- Отображение сообщения, если по запросу ничего не найдено.
+
+✅ **Интерактивность**
+
+- При наведении на миниатюру (thumbnail) пользователя появляется кастомный тултип с фотографией в высоком разрешении.
+
+✅ **Архитектура и инфраструктура**
+
+- **Строгая типизация:** 100% кода написано на TypeScript.
+- **Модульная архитектура:** Код разделен на фичи (`features`), переиспользуемые компоненты (`shared`) и макеты (`layouts`).
+- **Quality Gates:** Настроены ESLint, Prettier, Husky и Commitlint для поддержания чистоты и консистентности кода.
+- **CI/CD:** Автоматический деплой на GitHub Pages через GitHub Actions.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Технологии
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?logo=vite&logoColor=white)
+![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?logo=css-modules&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9.0-4B32C3?logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-3.0-F7B93E?logo=prettier&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Структура проекта
+
+src/
+├── app
+├── assets
+│ └── icons
+├── features
+│ └── users
+│ ├── components
+│ ├── config
+│ ├── hooks
+│ ├── services
+│ ├── types
+│ └── utils
+├── layouts
+├── shared
+│ ├── components
+│ ├── hooks
+│ ├── styles
+│ └── utils
+├── App.tsx
+└── main.tsx
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Установка и запуск
+
+### 📋 Предварительные требования
+
+Убедитесь, что у вас установлен [Node.js](https://nodejs.org/) (рекомендуемая версия 20.x или выше) и [npm](https://www.npmjs.com/).
+
+### 🔧 Установка
+
+1.  **Клонируйте репозиторий:**
+
+```bash
+    git clone https://github.com/SubbotinValery/STMLabs-test.git
+    cd STMLabs-test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Установите зависимости:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+```bash
+    npm install
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+▶️ Запуск
+Режим разработки: Запустит локальный сервер с Hot Module Replacement (HMR).
+
+```bash
+    npm run dev
+```
+
+    Приложение будет доступно по адресу http://localhost:5173.
+
+Сборка для продакшена: Создаст оптимизированную сборку в папке dist.
+
+```bash
+    npm run build
+```
+
+Проверка кода (Lint):
+
+```bash
+    npm run lint
+```
+
+    Для автоматического исправления: `npm run lint:fix`
+
+Форматирование кода (Prettier):
+
+    npm run format
+
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
 ```

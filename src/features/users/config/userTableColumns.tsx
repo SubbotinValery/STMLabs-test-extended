@@ -1,12 +1,14 @@
 import type { Column } from '@/shared/components/Table/Table';
 import type { User } from '../types/user.types';
-
+import { UserAvatar } from '../components/UserAvatar';
 export const userTableColumns: Column<User>[] = [
   { key: 'name', label: 'Имя' },
   {
     key: 'avatarThumb',
     label: 'Аватар',
-    render: (value) => <img src={value as string} alt="Avatar" />,
+    render: (value, item) => (
+      <UserAvatar thumbnailUrl={value as string} mediumUrl={item.avatarMedium} name={item.name} />
+    ),
   },
   { key: 'location', label: 'Местоположение' },
   { key: 'email', label: 'Email' },

@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import styles from './Navbar.module.css';
+import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 
 export interface NavLink {
   href: string;
@@ -35,29 +36,33 @@ export function Navbar({ title, icon: IconComponent, links = [] }: NavbarProps) 
           )}
           <h1 className={styles.title}>{title}</h1>
         </div>
+        <div className={styles.utilsContainer}>
+          <div className={styles.themeToggleContainer}>
+            <ThemeToggle />
+          </div>
+          <button
+            className={styles.menuButton}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Меню"
+          >
+            ☰
+          </button>
 
-        <button
-          className={styles.menuButton}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Меню"
-        >
-          ☰
-        </button>
-
-        <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
-          {links.map((link) => (
-            <a
-              className={styles.navLinkItem}
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-            >
-              {link.icon && <span>{link.icon}</span>}
-              {link.label}
-            </a>
-          ))}
+          <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
+            {links.map((link) => (
+              <a
+                className={styles.navLinkItem}
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+              >
+                {link.icon && <span>{link.icon}</span>}
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

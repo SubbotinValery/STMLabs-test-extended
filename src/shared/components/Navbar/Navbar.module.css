@@ -21,6 +21,18 @@
   gap: var(--spacing-3);
 }
 
+.utilsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.themeToggleContainer {
+  margin: 0 var(--spacing-4);
+  height: 35px;
+  width: 35px;
+}
+
 .logoLink {
 }
 

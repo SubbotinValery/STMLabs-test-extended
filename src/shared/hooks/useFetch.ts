@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface UseFetchResult<T> {
   data: T | null;
@@ -10,6 +11,7 @@ export function useFetch<T>(fetchFn: () => Promise<T>): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let isMounted = true;
@@ -23,7 +25,7 @@ export function useFetch<T>(fetchFn: () => Promise<T>): UseFetchResult<T> {
         }
       } catch (err) {
         if (isMounted) {
-          setError(err instanceof Error ? err.message : 'Ошибка загрузки');
+          setError(err instanceof Error ? err.message : t('error.msg'));
         }
       } finally {
         if (isMounted) {

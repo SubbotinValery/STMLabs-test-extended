@@ -1,6 +1,8 @@
 import { useState, type ReactNode } from 'react';
 import styles from './Navbar.module.css';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
+import { LanguageToggle } from '@/shared/components/LanguageToggle/LanguageToggle';
+import { useTranslation } from 'react-i18next';
 
 export interface NavLink {
   href: string;
@@ -16,8 +18,13 @@ interface NavbarProps {
 
 export function Navbar({ title, icon: IconComponent, links = [] }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { t } = useTranslation();
   const closeMenu = () => setIsMenuOpen(false);
+
+  const translatedLinks = links.map((link) => ({
+    ...link,
+    label: t(link.label),
+  }));
 
   return (
     <nav className={styles.navbar}>
@@ -37,19 +44,22 @@ export function Navbar({ title, icon: IconComponent, links = [] }: NavbarProps) 
           <h1 className={styles.title}>{title}</h1>
         </div>
         <div className={styles.utilsContainer}>
+          <div className={styles.langToggleContainer}>
+            <LanguageToggle />
+          </div>
           <div className={styles.themeToggleContainer}>
             <ThemeToggle />
           </div>
           <button
             className={styles.menuButton}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Меню"
+            aria-label={t('navbar.button')}
           >
             ☰
           </button>
 
           <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
-            {links.map((link) => (
+            {translatedLinks.map((link) => (
               <a
                 className={styles.navLinkItem}
                 key={link.href}

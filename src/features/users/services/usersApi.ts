@@ -1,5 +1,6 @@
 import type { User, ApiUser, ApiResponse } from '../types/user.types';
 import { formatDate } from '@/shared/utils/formatDate';
+import i18n from '@/shared/config/i18n';
 
 const API_URL = 'https://randomuser.me/api/?results=15';
 
@@ -21,13 +22,13 @@ export async function fetchUsers(): Promise<User[]> {
     const response = await fetch(API_URL);
 
     if (!response.ok) {
-      throw new Error(`Не удалось загрузить данные. Проверьте интернет и попробуйте снова.`);
+      throw new Error(i18n.t('userApi.error'));
     }
 
     const data: ApiResponse = await response.json();
     return data.results.map(transformUser);
   } catch (error) {
     console.error('Failed to fetch users:', error);
-    throw new Error('Не удалось загрузить данные. Проверьте интернет и попробуйте снова.');
+    throw new Error(i18n.t('userApi.error'));
   }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import styles from './Input.module.css';
+import i18n from '@/shared/config/i18n';
 
 interface InputProps {
   value?: string;
@@ -20,7 +21,7 @@ interface InputProps {
 export function Input({
   value = '',
   onChange,
-  placeholder = 'Введите текст...',
+  placeholder = i18n.t('input.placeholder'),
   label,
   type = 'text',
   disabled = false,
@@ -75,7 +76,7 @@ export function Input({
             type="button"
             onClick={handleClear}
             className={styles.clearButton}
-            aria-label="Очистить поле"
+            aria-label={i18n.t('input.clearLabel')}
           >
             {iconClear ? iconClear : '✕'}
           </button>

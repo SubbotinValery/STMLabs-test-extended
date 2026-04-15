@@ -22,7 +22,7 @@ export function Tooltip({
   delay = 300,
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false); // контролирует монтирование
+  const [shouldRender, setShouldRender] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
   const timeoutRef = useRef<number | null>(null);
   const hideTimeoutRef = useRef<number | null>(null);

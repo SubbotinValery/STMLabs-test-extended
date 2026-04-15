@@ -1,8 +1,8 @@
-// src/shared/components/Table/Table.tsx
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Spinner } from '../Spinner/Spinner';
 import { Error } from '../Error/Error';
 import styles from './Table.module.css';
+import i18n from '@/shared/config/i18n';
 
 export interface Column<T> {
   key: keyof T | string;
@@ -23,7 +23,7 @@ export function Table<T extends { id: string | number }>({
   data,
   loading = false,
   error = null,
-  emptyMessage = 'Нет данных',
+  emptyMessage = i18n.t('table.noData'),
 }: TableProps<T>) {
   if (loading) {
     return (

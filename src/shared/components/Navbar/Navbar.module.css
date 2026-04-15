@@ -28,9 +28,13 @@
 }
 
 .themeToggleContainer {
-  margin: 0 var(--spacing-4);
   height: 35px;
   width: 35px;
+}
+
+.langToggleContainer {
+  height: 38px;
+  width: 38px;
 }
 
 .logoLink {

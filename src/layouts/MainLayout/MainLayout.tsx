@@ -12,11 +12,11 @@ interface MainLayoutProps {
 export function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className={styles.layout}>
-      <Navbar title="STMLabs-test" icon={STMLabsIcon} links={navLinks} />
+      <Navbar title="STMLabs-test-extended" icon={STMLabsIcon} links={navLinks} />
       <main className={styles.main}>
         <div className={styles.container}>{children}</div>
       </main>
-      <Footer caption="STMLabs-test by Valery Subbotin" />
+      <Footer caption="STMLabs-test-extended by Valery Subbotin" />
     </div>
   );
 }

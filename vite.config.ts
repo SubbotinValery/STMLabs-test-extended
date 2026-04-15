@@ -12,7 +12,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/STMLabs-test/',
+  base: '/STMLabs-test-extended/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

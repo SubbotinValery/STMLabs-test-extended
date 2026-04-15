@@ -33,6 +33,18 @@ export const ruTranslations = {
   date: {
     error: 'Неверная дата',
   },
+  theme: {
+    light: 'Светлая тема',
+    dark: 'Тёмная тема',
+    toggle: 'Переключить тему',
+    toggleToLight: 'Переключить на светлую тему',
+    toggleToDark: 'Переключить на тёмную тему',
+  },
+  language: {
+    ru: 'Русский',
+    en: 'English',
+    toggle: 'Сменить язык',
+  },
 };
 
 export type TranslationsType = typeof ruTranslations;

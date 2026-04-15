@@ -35,4 +35,16 @@ export const enTranslations: TranslationsType = {
   date: {
     error: 'Invalid date',
   },
+  theme: {
+    light: 'Light theme',
+    dark: 'Dark theme',
+    toggle: 'Toggle theme',
+    toggleToLight: 'Switch to light theme',
+    toggleToDark: 'Switch to dark theme',
+  },
+  language: {
+    ru: 'Русский',
+    en: 'English',
+    toggle: 'Change language',
+  },
 };

@@ -3,8 +3,8 @@ import type { Language } from '@/shared/locales';
 
 interface LanguageContextType {
   language: Language;
-  changeLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
+  setLanguage: (language: Language) => void;
 }
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

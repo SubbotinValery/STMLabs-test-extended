@@ -8,7 +8,7 @@ function transformUser(apiUser: ApiUser): User {
     id: apiUser.login.uuid,
     name: `${apiUser.name.first} ${apiUser.name.last}`,
     avatarThumb: apiUser.picture.thumbnail,
-    avatarMedium: apiUser.picture.medium,
+    avatarLarge: apiUser.picture.large,
     location: `${apiUser.location.state} ${apiUser.location.city}`,
     registeredDate: formatDate(apiUser.registered.date),
     email: apiUser.email,

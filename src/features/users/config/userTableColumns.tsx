@@ -7,7 +7,7 @@ export const userTableColumns: Column<User>[] = [
     key: 'avatarThumb',
     label: 'Аватар',
     render: (value, item) => (
-      <UserAvatar thumbnailUrl={value as string} mediumUrl={item.avatarMedium} name={item.name} />
+      <UserAvatar thumbnailUrl={value as string} mediumUrl={item.avatarLarge} name={item.name} />
     ),
   },
   { key: 'location', label: 'Местоположение' },

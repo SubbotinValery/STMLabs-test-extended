@@ -2,7 +2,7 @@ export interface User {
   id: string;
   name: string;
   avatarThumb: string;
-  avatarMedium: string;
+  avatarLarge: string;
   location: string;
   registeredDate: string;
   email: string;
@@ -19,7 +19,7 @@ export interface ApiUser {
   };
   picture: {
     thumbnail: string;
-    medium: string;
+    large: string;
   };
   location: {
     state: string;
